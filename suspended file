@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Suspended</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<script>
+
+// ================================================================
+//  ✏️  CONFIG — EDIT THIS SECTION BEFORE USING
+// ================================================================
+
+const CONFIG = {
+  STORE_NAME:       'The Watch Plug',  // <- CHANGE THIS TO YOUR STORE NAME
+  DEVELOPER_WA:     '2349065147362',       // <- CHANGE THIS (your number)
+  DEVELOPER_NAME:   'VICTOR',             // <- CHANGE THIS (your name)
+  DEVELOPER_PHONE:  '09065147362',        // <- CHANGE THIS (your number)
+};
+
+// ================================================================
+//  ✅  DO NOT TOUCH ANYTHING BELOW THIS LINE
+// ================================================================
+
+document.title = CONFIG.STORE_NAME + ' - Store Suspended';
+
+const WA_MESSAGE = encodeURIComponent(
+  'Hi ' + CONFIG.DEVELOPER_NAME + ', my store (' + CONFIG.STORE_NAME + ') has been suspended. I want to renew my subscription.'
+);
+
+const styleEl = document.createElement('style');
+styleEl.textContent = `
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #0f0f0f; color: white; min-height: 100vh; padding: 30px 20px; overflow-y: scroll; overflow-x: hidden; display: flex; flex-direction: column; align-items: center; }
+  body::before { content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 20% 50%, rgba(102,126,234,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(244,67,54,0.08) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(118,75,162,0.08) 0%, transparent 50%); animation: bgPulse 8s ease-in-out infinite alternate; z-index: 0; pointer-events: none; }
+  @keyframes bgPulse { 0%{transform:scale(1) rotate(0deg)} 100%{transform:scale(1.1) rotate(3deg)} }
+  .container { position: relative; z-index: 1; text-align: center; max-width: 560px; width: 100%; }
+  .lock-wrapper { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 120px; height: 120px; margin: 0 auto 30px; }
+  .lock-ring { position: absolute; width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(244,67,54,0.3); animation: ringPulse 2s ease-in-out infinite; }
+  .lock-ring:nth-child(2) { width: 100px; height: 100px; border-color: rgba(244,67,54,0.5); animation-delay: 0.3s; }
+  @keyframes ringPulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.1);opacity:0.5} }
+  .lock-icon { width: 70px; height: 70px; background: linear-gradient(135deg,#f44336,#b71c1c); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 0 30px rgba(244,67,54,0.4); animation: iconGlow 2s ease-in-out infinite alternate; position: relative; z-index: 2; }
+  @keyframes iconGlow { from{box-shadow:0 0 20px rgba(244,67,54,0.4)} to{box-shadow:0 0 50px rgba(244,67,54,0.7)} }
+  .status-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(244,67,54,0.15); border: 1px solid rgba(244,67,54,0.4); color: #ff5252; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+  .status-dot { width: 7px; height: 7px; background: #f44336; border-radius: 50%; animation: blink 1s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+  h1 { font-family: 'Playfair Display', serif; font-size: 38px; margin-bottom: 15px; line-height: 1.2; background: linear-gradient(135deg,#fff 0%,#aaa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .subtitle { font-size: 16px; color: #888; line-height: 1.6; margin-bottom: 35px; }
+  .info-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 25px 30px; margin-bottom: 30px; text-align: left; }
+  .info-card-title { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; }
+  .info-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { font-size: 18px; margin-top: 1px; flex-shrink: 0; }
+  .info-text { font-size: 14px; color: #ccc; line-height: 1.5; }
+  .info-text strong { color: white; display: block; font-size: 13px; margin-bottom: 2px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg,#25D366,#128C7E); color: white; text-decoration: none; padding: 16px 32px; border-radius: 50px; font-size: 16px; font-weight: 600; transition: all 0.3s; box-shadow: 0 4px 20px rgba(37,211,102,0.3); margin-bottom: 15px; }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+  .cta-btn svg { width: 22px; height: 22px; fill: white; }
+  .help-text { font-size: 13px; color: #555; }
+  .divider { display: flex; align-items: center; gap: 15px; margin: 25px 0; color: #444; font-size: 12px; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+  .footer-note { font-size: 12px; color: #444; margin-top: 30px; padding-bottom: 20px; }
+  .powered { display: inline-flex; align-items: center; gap: 6px; color: #555; font-size: 12px; margin-top: 8px; text-decoration: none; transition: color 0.3s; }
+  .powered:hover { color: #ff9800; }
+  @media (max-width: 480px) { h1{font-size:28px} .info-card{padding:20px} .cta-btn{padding:14px 24px;font-size:15px} }
+`;
+document.head.appendChild(styleEl);
+
+document.body.innerHTML = `
+  <div class="container">
+    <div class="lock-wrapper">
+      <div class="lock-ring"></div>
+      <div class="lock-ring"></div>
+      <div class="lock-icon">🔒</div>
+    </div>
+    <div class="status-badge">
+      <div class="status-dot"></div>
+      Store Suspended
+    </div>
+    <h1>This Store Has Been Suspended</h1>
+    <p class="subtitle">
+      <strong style="color:#ccc;">${CONFIG.STORE_NAME}</strong> has been temporarily disabled.<br>
+      Please contact your store manager to restore access.
+    </p>
+    <div class="info-card">
+      <div class="info-card-title">Why is my store suspended?</div>
+      <div class="info-row">
+        <div class="info-icon">💳</div>
+        <div class="info-text">
+          <strong>Subscription Payment Due</strong>
+          Your monthly store subscription has expired and needs to be renewed.
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🛍️</div>
+        <div class="info-text">
+          <strong>Store is Temporarily Offline</strong>
+          Your products and store data are safe. Everything will be restored immediately after payment.
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">⚡</div>
+        <div class="info-text">
+          <strong>Quick Resolution</strong>
+          Once payment is confirmed, your store will be back online within minutes.
+        </div>
+      </div>
+    </div>
+    <a href="https://wa.me/${CONFIG.DEVELOPER_WA}?text=${WA_MESSAGE}" class="cta-btn" target="_blank">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Contact ${CONFIG.DEVELOPER_NAME} on WhatsApp
+    </a>
+    <div class="help-text">Tap the button above to renew your subscription instantly</div>
+    <div class="divider">or</div>
+    <div class="help-text" style="color:#555;">
+      📞 Call/WhatsApp: <strong style="color:#888;">${CONFIG.DEVELOPER_PHONE}</strong>
+    </div>
+    <div class="footer-note">
+      <a href="https://wa.me/${CONFIG.DEVELOPER_WA}" class="powered" target="_blank">
+        💼 ⚡ Powered by ${CONFIG.DEVELOPER_NAME}
+      </a>
+    </div>
+  </div>
+`;
+</script>
+</body>
+</html>
