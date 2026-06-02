@@ -1,0 +1,5 @@
+URL (required) : perfumequeen.name.ng/*
+
+Forwarding URL : 301 - Permanent Redirect
+
+Enter destination URL : https://www.perfumequeen.name.ng/$1
