@@ -1,0 +1,10 @@
+Build me an "Image to URL" web app exactly like this one: https://image-forever-link.lovable.app
+Features I need:
+Drag-and-drop or click to upload images (PNG, JPG, GIF, WEBP, multiple at once)
+After upload, show a permanent public URL I can copy with one click
+Keep a list of my uploads on the homepage (stored per-browser in localStorage)
+Clean, minimal design with a header showing the app name "Image2URL"
+Use Lovable Cloud for storage (create a public "images" bucket)
+Show toast notifications on upload success/failure and when URL is copied
+Include a "Clear history" button to wipe the local list
+Make it mobile-friendly and fast. No login required for visitors — anyone with the link can upload.
