@@ -1,0 +1,16 @@
+Act as a professional color artist/brand designer. I'm building an online store for a business called "[BUSINESS NAME]" that sells [WHAT THEY SELL — e.g. perfumes, phone accessories, wristwatches, etc.].
+
+Choose a professional 3-color palette for this store's website that fits what this brand sells, feels presentable, builds trust, and encourages customers to shop:
+- COLOR_PRIMARY (main header/banner color)
+- COLOR_SECONDARY (blends with primary in a smooth gradient)
+- COLOR_ACCENT (buttons, prices, call-to-action — must stand out clearly against both the primary/secondary gradient AND against a white background, since this is what pushes customers to click "Add to Cart")
+
+Requirements:
+- Give me actual hex codes (starting with #), not color names
+- Primary and secondary should be close enough in tone to blend smoothly as a gradient
+- Accent should contrast well and feel energetic/actionable — this is the color doing the selling
+- All three colors must have strong enough contrast for white text to be readable on top of them
+- Pick colors that make sense for what this specific brand sells (e.g. a perfume store might lean elegant/luxury, a phone accessories store might lean modern/techy, a kids' store might lean playful) — you decide what fits based on the product
+- The palette should feel professional and premium, not generic or "template-y"
+
+Give me the 3 hex codes clearly labeled, plus a short explanation of why these specific colors suit this brand and help drive sales.
