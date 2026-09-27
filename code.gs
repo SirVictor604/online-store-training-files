@@ -73,6 +73,15 @@ function obtenerUltimaActualizacion() {
 }
 
 // ========================================
+// Helper: sets a different width for each column, one at a time
+// (setColumnWidths only accepts ONE width for a whole range — it
+//  cannot take an array of different widths, which was the bug)
+// ========================================
+function setAnchoColumnas(sheet, startCol, widths) {
+  widths.forEach((w, i) => sheet.setColumnWidth(startCol + i, w));
+}
+
+// ========================================
 // INITIALIZE SHEETS — Run this once!
 // ========================================
 function inicializarHojas() {
@@ -91,7 +100,7 @@ function inicializarHojas() {
     [2, 'Sample Perfume B', 'Eau de Toilette', 10000, 'bottle', 15, 'https://placehold.co/300x300?text=Perfume+B', 'A woody oriental scent', 'SI'],
   ];
   productos.getRange(2, 1, demoProducts.length, 9).setValues(demoProducts);
-  productos.setColumnWidths(1, 9, [50,250,120,80,80,60,350,250,70]);
+  setAnchoColumnas(productos, 1, [50,250,120,80,80,60,350,250,70]);
   productos.setFrozenRows(1);
 
   // ── PEDIDOS ────────────────────────────────
@@ -102,7 +111,7 @@ function inicializarHojas() {
   const pedHeaders = [['ID Pedido', 'Fecha', 'Nombre Cliente', 'Email', 'Teléfono', 'Dirección', 'Productos', 'Total', 'Estado']];
   pedidos.getRange(1, 1, 1, 9).setValues(pedHeaders);
   pedidos.getRange(1, 1, 1, 9).setBackground('#2c3e50').setFontColor('#ffffff').setFontWeight('bold').setFontSize(11);
-  pedidos.setColumnWidths(1, 9, [160,140,180,200,130,250,300,100,100]);
+  setAnchoColumnas(pedidos, 1, [160,140,180,200,130,250,300,100,100]);
   pedidos.setFrozenRows(1);
 
   // ── CLIENTES ───────────────────────────────
@@ -113,7 +122,7 @@ function inicializarHojas() {
   const cHeaders = [['#', 'Nombre', 'Email', 'Teléfono', 'Dirección', 'Fecha Registro', 'Total Compras']];
   clientes.getRange(1, 1, 1, 7).setValues(cHeaders);
   clientes.getRange(1, 1, 1, 7).setBackground('#ff9800').setFontColor('#ffffff').setFontWeight('bold').setFontSize(11);
-  clientes.setColumnWidths(1, 7, [50,180,220,130,250,140,120]);
+  setAnchoColumnas(clientes, 1, [50,180,220,130,250,140,120]);
   clientes.setFrozenRows(1);
 
   // ── DELIVERY ───────────────────────────────
@@ -131,7 +140,7 @@ function inicializarHojas() {
     ['Nationwide (DHL / Courier)', 5000, '3–5 days'],
   ];
   delivery.getRange(2, 1, demoDelivery.length, 3).setValues(demoDelivery);
-  delivery.setColumnWidths(1, 3, [280, 100, 250]);
+  setAnchoColumnas(delivery, 1, [280, 100, 250]);
   delivery.setFrozenRows(1);
 
   Logger.log('✅ Done! All 4 sheets created: Productos, Pedidos, Clientes, Delivery.');
